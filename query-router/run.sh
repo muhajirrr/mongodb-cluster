@@ -24,3 +24,7 @@ sudo systemctl stop mongod
 
 sudo systemctl enable mongos.service
 sudo systemctl start mongos
+
+# install pymongo
+sudo apt-get -y install python3-pip
+pip3 install pymongo
