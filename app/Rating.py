@@ -1,21 +1,18 @@
-
-
 class Rating():
-	def __init__(self, db):
-		self.db = db
+	def __init__(self, collection):
+		self.collection = collection
 
 	def store(self, rating):
-		return self.db.ratings.insert_one(rating)
-
+		return self.collection.insert_one(rating)
 
 	def all(self):
-		return [r for r in self.db.ratings.find()]
+		return [r for r in self.collection.find({}, {'_id': False})]
 
 	def find(self, filter):
-		return [r for r in self.db.ratings.find(filter)]
+		return [r for r in self.collection.find(filter, {'_id': False})]
 
 	def update(self, filter, update):
-		return self.db.ratings.update_many(filter, {'$set': update})
+		return self.collection.update_many(filter, {'$set': update})
 
 	def delete(self, filter):
-		return self.db.ratings.delete_many(filter)
+		return self.collection.delete_many(filter)

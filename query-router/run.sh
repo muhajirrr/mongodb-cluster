@@ -28,3 +28,7 @@ sudo systemctl start mongos
 # install pymongo
 sudo apt-get -y install python3-pip
 pip3 install pymongo
+pip3 install flask
+
+sudo ufw allow 5000
+sudo ufw --force enable 
