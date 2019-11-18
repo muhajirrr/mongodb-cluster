@@ -72,5 +72,13 @@ def delete_rating():
 	res = rating.delete(data)
 	return str(res.deleted_count) + " ratings deleted."
 
+@app.route('/api/rating/review_count', methods = ['GET'])
+def get_review_count():
+	return json.dumps(rating.get_review_count_by_stars())
+
+@app.route('/api/rating/average_stars', methods = ['GET'])
+def get_average_stars():
+	return json.dumps(rating.get_average_stars_by_country())
+
 if __name__ == '__main__':
-   app.run(host='192.168.16.107', debug=True)
+   app.run(host='127.0.0.1', debug=True)
